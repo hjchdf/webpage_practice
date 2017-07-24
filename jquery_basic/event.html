@@ -1,0 +1,48 @@
+鼠标事件实现，单击，双击，移动（可获得相对于左上角位置）
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>click</title>
+        <style>
+            #testMouseMoveDiv{
+                position: relative;
+                width: 500px;
+                height: 500px;
+                border: solid 1px black;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+            <a id="test-link" href="#0">try to click it</a>
+            <a id="link2" href="#1"> double click</a>
+            <br>
+            <div id="testMouseMoveSpan"></div>
+            <div id="testMouseMoveDiv">1</div>
+            <input type="radio" checked="checked" name="prop" value="checked">checked_or_not
+            <input type="radio" name="prop" value="1">nature
+    </body>
+
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        var a = $('#test-link');
+        a.on('click', function() {
+            alert('Hello!');
+        });
+
+        var b = $('#link2');
+        b.dblclick(function() {
+            alert('hello world');
+        });
+
+
+        $(function() {
+            $('#testMouseMoveDiv').mousemove(function(e) {
+                $('#testMouseMoveSpan').text('pageX = ' + e.pageX + ', pageY = ' + e.pageY);
+            });
+        });
+
+    </script>
+</html>

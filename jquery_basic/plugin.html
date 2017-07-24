@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>plugin</title>
+    </head>
+    <body>
+        <!-- HTML结构 -->
+        <div id="test-highlight1">
+            <p>什么是<span>jQuery</span></p>
+            <p><span>jQuery</span>是目前最流行的<span>JavaScript</span>库。</p>
+        </div>
+    </body>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        // ************************************************
+        编写一个jQuery插件的原则：
+
+        给$.fn绑定函数，实现插件的代码逻辑；
+        插件函数最后要return this;以支持链式调用；
+        插件函数要有默认值，绑定在$.fn.<pluginName>.defaults上；
+        用户在调用时可传入设定值以便覆盖默认值。
+        // *************************************************
+
+        // 直接实现
+        $.fn.highlight1 = function () {
+        // this已绑定为当前jQuery对象:
+        this.css('backgroundColor', '#fffceb').css('color', '#d85030');
+        return this;
+        }
+
+        /*
+        $('#test-highlight1 span').highlight1();
+        */
+
+        /////////////////////////////////////////////////////////
+
+        // 高亮的颜色能自己来指定
+        // 要考虑到各种情况:
+        // options为undefined
+        // options只有部分key
+        $.fn.highlight2 = function(options) {
+            var bgcolor = options && options.backgroundColor || '#fffceb';
+            var color = options && options.color || '#d85030';
+            this.css({'backgroundColor': bgcolor}).css({'color': color});
+            return this;
+        }
+
+        /*
+        $('#test-highlight1 span').highlight2({
+            backgroundColor: "#00a8e6",
+            color: '#ffffff'
+        });
+        */
+
+        //////////////////////////////////////////////////////////////
+
+        // 每次调用都需要传入自定义的设置，自己设定一个缺省值，
+        // 以后的调用统一使用无参数的highlight()
+        // * 把多个object对象的属性合并到第一个target对象中，遇到同名属性，总是使用靠后的对象的值，
+        // * 也就是越往后优先级越高
+        $.fn.highlight = function(options) {
+            // 合并默认值和用户设定值
+            var opts = $.extend({}, $.fn.highlight.defaults, options);
+            this.css('backgroundColor', opts.backgroundColor).css('color', opts.color);
+            return this;
+        };
+
+        // 设定默认值:
+        $.fn.highlight.defaults = {
+            color: '#d85030',
+            backgroundColor: '#fff8de'
+        };
+
+        /*
+        $.fn.highlight.defaults.color = "#fff";
+        $.fn.highlight.defaults.backgroundColor = "#000";
+        $('#test-highlight1 span').highlight();
+        */
+
+
+
+    </script>
+</html>

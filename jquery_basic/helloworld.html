@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello world jQuery!</title>
+    </head>
+    <body>
+        <!-- HTML结构 -->
+        <div id="test-div">
+            <ul>
+                <li><span>JavaScript</span></li>
+                <li><span>Python</span></li>
+                <li><span>Swift</span></li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="jquery-3.2.1.js"></script>
+        <script type="text/javascript">
+            // JavaScript,Lua,Pascal,Python,Ruby,Swift
+            // self
+            /*
+            var js = $('#test-div li:first-child');
+            js.after('<li><span>Lua</span></li>');
+            var py = $('#test-div li:nth-child(3)');
+            py.before('<li><span>Pascal</span></li>');
+            var sw = $('#test-div li:last-child');
+            sw.before('<li><span>Ruby</span></li>');
+            */
+
+            // others
+            // var ul = $('#test-div>ul');
+            // ['Pascal', 'Lua', 'Ruby'].forEach(function(v) {
+            //     ul.append('<li><span>' + v + '</span></li>');
+            // });
+            // var arr = ul.children().sort(function (x, y) {
+            //     return $(x).text() > $(y).text() ? 1 : -1;
+            // });
+            // ul.append(arr);
+
+            var ul = $('#test-div > ul');
+            ['Pascal', 'Lua', 'Ruby'].forEach(function(value) {
+                ul.append('<li><span>' + value + '</span></li>');
+            });
+            var arr = ul.children().sort(function(x, y) {
+                return $(x).text() > $(y).text() ? 1 : -1;
+            });
+            ul.append(arr);
+        </script>
+    </body>
+</html>
