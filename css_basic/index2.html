@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>盒模型</title>
+        <style media="screen">
+            body div span{
+                border: 1px solid green;
+                margin: 50px, 50px,50px, 50px;
+                padding: 50px, 30px;
+                background-color: rgb(163, 186, 217);
+                padding-left: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li>border 边框(宽度、样式、颜色)</li>
+                <li>padding 内边距</li>
+                <li>margin 外边距</li>
+            </ul>
+            <span id="abc"> 属性顺序：上、右、下、左（逆时针）</span>
+        </div>
+    </body>
+</html>
