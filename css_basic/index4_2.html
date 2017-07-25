@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>围住浮动元素的三种方法2</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            section{
+                border: 1px solid blue;
+                margin: 0 0 10px 0;
+                float: left;
+                /*浮动section后，他会收缩包裹其子元素，
+                需要设置width: 100%;
+                使其与浏览器同宽*/
+                width: 100%;
+            }
+
+            p{
+                margin: 0;
+            }
+
+            footer{
+                border: 1px solid red;
+                /*强制footer呆在section下方
+                被清除的元素不会提升到浮动元素旁边*/
+                clear: left;
+            }
+
+            img{
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>同时浮动父元素</h1>
+        <br>
+        <section>
+            <img src="images/3-1.jpg" alt="leimu">
+            <p>It's fun to float.</p>
+        </section>
+        <footer>Here is the footer element that runs across the bottom of the page</footer>
+    </body>
+</html>
