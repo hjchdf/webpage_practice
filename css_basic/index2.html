@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>盒模型</title>
+        <style media="screen">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+
+            body div span{
+                border: 1px solid green;
+                /*
+                1.行内元素同样具有盒子模型
+                2.行内元素的margin-top、margin-bottom属性设置无效果
+                3.行内元素的padding-top、padding-bottom从显示的效果上是增加的，
+                    但不会对他周围的元素产生任何影响。
+                4.行内元素的padding-left、padding-right、
+                    margin-left、margin-bottom属性设置是有效的
+                5.浏览器默认样式表有设置margin,padding,会对后期元素对应属性产生影响
+                6.针对5,
+                    1）建议将：*{margin:0; padding:0}作为样式表第一条规则
+                    2）也可内部元素直接设置(margin/padding)-(top/right/bottom/left)
+                */
+
+                /*margin-left: 50px;
+                margin-right: 50px;
+                margin-top: 500px;
+                margin-bottom: 100px;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 20px;
+                padding-bottom: 50px;*/
+
+                padding: 20px;
+                margin: 200px;
+
+                background-color: rgb(163, 186, 217);
+            }
+
+            p{
+                height: 50px;
+                border: 1px solid #000;
+                background-color: #fff;
+                margin-top: 50px;
+                margin-bottom: 30px;
+                /*
+                垂直方向外边距叠加，水平方向外边距不叠加
+                即： 垂直方向两元素上下距离为两外边距较大者
+                    水平方向两元素左右距离为两外边距之和
+                */
+            }
+
+            #span1{
+                border: 1px solid red;
+                width: 200px;
+            }
+
+            /*
+            对于块级元素：
+                没有设置width,
+                    元素宽度填满其父元素，margin/border/padding的添加会导致内容宽度减少
+                    减少量为以上三者之和
+                设置两width,
+                    width属性只是元素内容区的宽度，总宽度为内容区,margin,border,padding
+                    宽度之和。
+            对于行内元素：
+                无固定width,内容区宽度auto，有margin,border,padding属性
+            */
+            #id1{
+                border: 6px solid #000;
+                margin: 20px;
+                padding: 10px;
+            }
+
+            #id2{
+                width: 400px;
+                border: 6px solid #000;
+                margin: 20px;
+                padding: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li>border 边框(宽度、样式、颜色)</li>
+                <li>padding 内边距</li>
+                <li>margin 外边距</li>
+            </ul>
+            <span id="abc"> 属性顺序：上、右、下、左（逆时针）</span>
+        </div>
+
+        <p id="id1">行内元素同样具有盒子模型</p>
+        <p id="id2">行内元素同样具有盒子模型</p>
+        <p>行内元素同样具有盒子模型</p>
+
+        <span id="span1">width</span>
+    </body>
+</html>

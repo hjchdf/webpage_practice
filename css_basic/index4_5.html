@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>没有父元素时如何清除</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            section{
+                width: 750px;
+                border: 1px solid red;
+            }
+            img{
+                float: left;
+                margin: 0 4px 4px 0;
+            }
+            p{ margin: 0 0 5px 0; }
+            .clearfix::after{
+                content: ".";
+                display: block;
+                height: 0;
+                visibility: hidden;
+                clear: both;
+                /*
+                在图片下方占据整行空间，挡住下面的图片上升
+                */
+            }
+        </style>
+    </head>
+    <body>
+        <p>给浮动边的每个段落添加clear:both属性的伪元素</p>
+        <br>
+        <section>
+            <img src="images/4-5.jpg" alt="asuka">
+            <p class="clearfix">明日香是一个性格十分“天然”的特别女孩，她就读于初中三年级，无论是上学路上，还是在学校里，明日香经常会做出让人意想不到的天然萌举动、说出让人无法招架的话。加上长相甜美可爱，身材姣好，她所到之处都会卷起一股“明日香”之风，令周围的男性心花怒放。出场人物还有明日香的摄影师爸爸，以及同校的学妹等角色，明日香独特的个性也影响到身边人</p>
+
+            <img src="images/4-5.jpg" alt="asuka">
+            <p class="clearfix">明日香是一个性格十分“天然”的特别女孩，她就读于初中三年级，无论是上学路上，还是在学校里，明日香经常会做出让人意想不到的天然萌举动、说出让人无法招架的话。加上长相甜美可爱，身材姣好，她所到之处都会卷起一股“明日香”之风，令周围的男性心花怒放。出场人物还有明日香的摄影师爸爸，以及同校的学妹等角色，明日香独特的个性也影响到身边人</p>
+
+            <img src="images/4-5.jpg" alt="asuka">
+            <p class="clearfix">明日香是一个性格十分“天然”的特别女孩，她就读于初中三年级，无论是上学路上，还是在学校里，明日香经常会做出让人意想不到的天然萌举动、说出让人无法招架的话。加上长相甜美可爱，身材姣好，她所到之处都会卷起一股“明日香”之风，令周围的男性心花怒放。出场人物还有明日香的摄影师爸爸，以及同校的学妹等角色，明日香独特的个性也影响到身边人</p>
+        </section>
+    </body>
+</html>

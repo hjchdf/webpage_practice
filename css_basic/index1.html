@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>伪类和伪元素</title>
+        <style media="screen">
+            a:link { color: black;}
+            a:visited { color: green }
+            a:hover { text-decoration: none; color: red;}
+            a:active{ color: blue; }
+
+            input:focus{ border: 1px solid blue;}
+
+            #mytarget:target{background: #eee;}
+
+            #construction li:first-child{color: red;}
+            #construction li:last-child{color: blue;}
+            #construction li:nth-child(2){color: green;}
+
+            #firstletter::first-letter{font-size: 300%}
+            #firstline::first-line{font-variant: small-caps;}
+
+            p.age::before{content: "Age: ";}
+            p.age::after{content: " years";}
+        </style>
+    </head>
+    <body>
+        <h1 id="mytarget">UI伪类</h1>
+        <h2>链接伪类</h2>
+        <a href="https://www.baidu.com">baidu</a>
+        <ul>
+            <li>link: 一般状态</li>
+            <li>visited: 此前点击过</li>
+            <li>hover：悬停</li>
+            <li>active：正被点击</li>
+        </ul>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+        <p>to take the place</p>
+
+        <h2>:foucus伪类</h2>
+        <input type="text" name="input-text" value="1234">
+        <p>单击时获得效果</p>
+        <h2>:target伪类</h2>
+        <a href="#mytarget">定位到'UI伪类'，并向其添加浅灰色背景</a>
+
+        <h2>结构化伪类</h2>
+        <ul id="construction">
+            <li>e:first-child: 同组同胞元素第一个</li>
+            <li>e:nth-child(n)：同组同胞元素第n个(1开始)</li>
+            <li>e:last-child：同组同胞元素最后一个</li>
+        </ul>
+
+        <h1>伪元素</h1>
+        <h2>::first-letter 首字符</h2>
+        <p id="firstletter">example</p>
+
+        <h2>::first-line 第一行</h2>
+        <p id="firstline">
+            lumina is an extensively used catalyst and carrier, it is often obtained commercially by baking pseudo -boehmite(PB) on high temperature.
+            氧化铝是一种应用很广的催化剂及载体，工业上一般由拟薄水铝石（PB）高温焙烧得到。
+        </p>
+
+        <h2>::before, ::after 前后</h2>
+        <p class="age">25</p>
+    </body>
+</html>

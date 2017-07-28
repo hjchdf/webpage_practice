@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>围住浮动元素的三种方法1</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            section{
+                border: 1px solid blue;
+                margin: 0 0 10px 0;
+                overflow: hidden;
+                /*可靠地使父元素包含其浮动的子元素
+                简爱，不太直观*/
+            }
+
+            p{
+                margin: 0;
+            }
+
+            footer{
+                border: 1px solid red;
+            }
+
+            img{
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>为父元素添加overflow:hidden</h1>
+        <br>
+        <section>
+            <img src="images/3-1.jpg" alt="leimu">
+            <p>It's fun to float.</p>
+        </section>
+        <footer>Here is the footer element that runs across the bottom of the page</footer>
+    </body>
+</html>

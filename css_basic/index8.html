@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>文本</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .contain{
+                border: 1px solid #000;
+                width: 800px;
+                /*height: 610px;*/
+            }
+            img{ float: left; }
+            .mytext{
+                margin: 10px 0;
+                text-indent: 2em;
+                text-decoration: underline;
+                text-transform: none;
+                line-height: 1.5;
+            }
+            .mytext::first-letter{ font-size: 1.5em; }
+            #title{
+                text-align: center;
+                letter-spacing: 1em;
+                font-size: 2em;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>文本缩进 -- text-indent</h2>
+        <p>可以被子元素继承（具体数值px)，建议用em，可以负值，但左边要有空间</p>
+        <br>
+
+        <h2>字符间距 -- letter-spacing</h2>
+        <p>值：任何长度值（正、负值均可）</p>
+        <p>相对于默认字符间距，正值增大字符间距，负值缩小字符间距，建议用em</p>
+        <br>
+
+        <h2>单词间距 -- word-spacing</h2>
+        <p>值：任何长度值（正、负值均可）</p>
+        <p>建议用em</p>
+        <br>
+
+        <h2>文本装饰 -- text-decoration</h2>
+        <p>值：underline, overline, line-through(划掉), blink(闪烁，不建议), none</p>
+        <br>
+
+        <h2>文本对齐 -- text-align</h2>
+        <p>值：left, right, center, justify(两端对齐)</p>
+        <br>
+
+        <h2>行高 -- line-height</h2>
+        <p>值：任何数值（不用指定单位）</p>
+        <p>1为文本高度，是文本高度的倍数</p>
+        <br>
+
+        <h2>文本转换 -- text-transform</h2>
+        <p>值：none, uppercase(全部大写), lowercase(全部小写), capitalize(所有单词首字母大写)</p>
+        <br>
+
+        <h2>垂直对齐 -- vertical-align</h2>
+        <p>值：
+            <br>
+            任意长度值以及sub(垂直对齐文本的下标),
+            <br>
+            super(垂直对齐文本的上标),
+            <br>
+            top(把元素的顶端与行中最高元素的顶端对齐),
+            <br>
+            middle(把此元素放置在父元素的中部),
+            <br>
+            bottom(把元素的底端与父元素字体的底端对齐)等
+        </p>
+        <p>只作用于行内元素，块级元素需设置display:inline</p>
+        <br>
+
+        <div class="contain">
+            <img src="images/7-1.jpg" alt="baccano" >
+            <p id="title">永生之酒</p>
+            <p class="mytext">
+                中世纪，炼金术士们以巨大的代价从恶魔的手中得到了传说中的永生之酒，凡是喝下永生之酒的人们，正如它的名字那样，将会得到永远不会死亡的肉体。永生之酒带来了希望，却也引发了空前绝后的灾难，因为私欲和利益，与此酒相关的人士一个接着一个失去了踪迹。随着禁酒令的颁布，永生之酒的下落逐渐成为了谜题，然而数年过后，有关它重出江湖的消息再次被传得沸沸扬扬，在纽约的黑道中激起了涟漪。身怀绝技的少年洛菲（吉野裕行 配音）、不老不死的炼金术士阿洛瓦（宫本充 配音）、个性莽撞大大咧咧的夫妻艾萨克（小野坂昌也 配音）和哈文特（青木静香 配音），这些身份从无交集的人们，也为了追寻永生之酒的下落而走到了一起。
+            </p>
+            <p class="mytext">
+                Medieval, alchemists at great cost from the hands of the devil to get the legendary eternal wine, who drink the wine of eternal life, as its name, will get the body will never die. The wine of eternal life has brought hope, but also led to an unprecedented disaster, because the desires and interests, and the wine-related people one by one lost traces. With the promulgation of the prohibition order, the whereabouts of the wine of eternity became a puzzle, but after a few years the news about it came back again and again, and the ripples in New York's underworld. (Yoshinoya Junko also dubbing) and Harvardte (Aoki Shinko dubbing) ), These identities from the intersection of people, but also to pursue the whereabouts of the wine of eternal life came together.
+            </p>
+            <div style="clear:both;"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>字体</title>
+        <style media="screen">
+            /**{
+                margin: 0;
+                padding: 0;
+                /*会影响ul使用*/
+            }*/
+            body{
+                font-family: helvetica, arial, sans-serif;
+            }
+            #sizeouter{ font-size: 2em;}
+            #sizeinner{font-size: 2em; }
+        </style>
+    </head>
+    <body>
+        <h1>字体 -- font-family</h1>
+        <p>字体栈 --> 一组字体（使用第一个有效字体，防止前部字体缺失）</p>
+        <p>通常给font-family字体栈的最后一项指定一个<strong>通用字体类</strong>(如serif, sans-serif)</p>
+        <p>常见通用字体类</p>
+        <ul>
+            <li>serif</li>
+            <li>sans-serif</li>
+            <li>monospace</li>
+            <li>cursive</li>
+            <li>fantasy</li>
+        </ul>
+        <br>
+
+        <h1>字体大小 -- font-size</h1>
+        <h2>绝对字体大小</h2>
+        <p>像素、派卡(pica)、英寸</p>
+        <p>与祖先元素的字体大小无关</p>
+        <h2>相对字体大小</h2>
+        <p>百分比、em、rem(根元素字体大小)</p>
+        <p>相对于最近的“被设定过字体大小的(不一定要绝对大小)”祖先元素(一般为body)来确定</p>
+        <br>
+        <p id="sizeouter">this is <strong id="sizeinner">very important!</strong></p>
+        <br>
+
+        <h1>字体样式 -- font-style</h1>
+        <p>值:
+            <span style="font-style: italic;">italic</span>
+            <span style="font-style: oblique">oblique</span>
+            <span style="font-style: mormal">normal</span>
+        </p>
+        <p>设定斜体还是正体，italic和oblique效果相同</p>
+        <p style="font-style: italic; font-size: 2em;">
+            这段文字用来说明，<span style="font-style: normal">normal可以取消所有特殊样式</span>
+        </p>
+        <p>一般normal用来有选择地覆盖某个默认或你设定的全局属性</p>
+        <br>
+
+        <h1>字体粗细 -- font-weight</h1>
+        <p>可能的值</p>
+        <ul>
+            <li>100, 200......900</li>
+            <li>lighter, normal, bold, bolder</li>
+        </ul>
+        <p>最好只用bold和normal这两个值</p>
+        <p style="font-weight: bold;">
+            this is bolded text with
+            <span style="font-weight: normal;">a piece of non-bolded text</span>
+        </p>
+        <br>
+
+        <h1>字体变化 -- font-variant</h1>
+        <p>值：small caps(所有小写英文字母变成小型大写字母), normal</p>
+        <p style="font-variant: small-caps;">ture THE letter</p>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>文字版式1 -- 简单的文本布局</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{ font: 1.0em helvetica, arial, sans-serif; }
+            /*为了将来修改页面中所有文本的字体更方便，必须在font简写属性中同时设定字体大小，而且要使用相对单位em.*/
+            article{
+                width: 500px;
+                margin: 20px auto;
+                /*如果有 width 那么 margin-left/margin-right是 auto(其他值么)，那就是0。
+                如果 width 不是 auto，那就是有确定宽度了。margin-left/margin-right 是 auto，那就居中。*/
+                padding: 20px;
+                border: 2px solid #999;
+            }
+            h1, h2, h2, h4, h5, h6{
+                line-height: 1.15em;
+                margin-bottom: .1em;
+            }
+            p, ul, blockquote{
+                line-height: 1.15em;
+                margin-bottom: .75em;
+            }
+            ul{ margin-left: 32px;}
+            h1{ font-size: 1.9em: }
+            h2{ font-size: 1.6em; }
+            h3{ font-size: 1.4em; }
+            h4{ font-size: 1.2em; }
+            h5{ font-size: 1em; }
+            h6{ font-size: .9em; }
+            p{ font-size: .9em; }
+            code{ font-size: 1.3em;}
+        </style>
+    </head>
+    <body>
+        <article>
+            <h1>CSS</h1>
+            <p>CSS  stands  for  Cascading  Style  Sheets.  CSS  controls  the  presentational  aspects  of  your  Web  pages.</p>
+            <h2>Block-Level  Elements</h2>
+            <p>Block-level  elements  stack  down  the  page.  They  include:</p>
+            <ul>
+                <li><code>header</code></li>
+                <li><code>section</code></li>
+                <li><code>h1,  h2,  etc.</code></li>
+             </ul>
+            <h2>Inline  Elements</h2>
+            <p>Inline  elements  sit  next  to  each  other,  if  there  is  room.  They  include:</p>
+            <ul>
+                <li><code>img</code></li>
+                <li><code>a</code></li>
+                <li><code>em</code></li>
+             </ul>
+            <blockquote>
+                <q>Typography  maketh  the  Web  site.</q><cite>CWS</cite>
+             </blockquote>
+         </article>
+    </body>
+</html>
