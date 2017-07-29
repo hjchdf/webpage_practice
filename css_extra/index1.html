@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>照片 倾斜 阴影 旋转</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                margin: 30px;
+                background-color: #E9E9E9;
+            }
+            .frame{
+                padding: 10px 10px 20px 10px;
+                border: 1px #BFBFBF solid;
+            }
+            div{ overflow: hidden;}
+            .rotate_left{
+                float: left;
+                transform:rotate(7deg);
+            }
+            .rotate_right{
+                float:left;
+                transform: rotate(-8deg);
+            }
+            .caption{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="frame rotate_left">
+            <img src="image/1-1.jpg" alt="first">
+            <p class="caption">第一个萌妹子</p>
+        </div>
+
+        <div class="frame rotate_right">
+            <img src="image/1-2.jpg" alt="second">
+            <p class="caption">第二个萌妹子</p>
+        </div>
+    </body>
+</html>
