@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>media requery</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" media="screen and (min-width:500px)" href="over500.css"> -->
+        <style media="screen">
+            @media screen and (min-width: 500px) {
+                body { color: rgba(245, 4, 69, 0.89);}
+                .yes {
+                    opacity: 0;
+                }
+                .no {
+                    opacity: 1
+                }
+            }
+
+            @media screen and (min-width: 800px) {
+                body {background-color: rgb(196, 183, 207);}
+            }
+
+            .content {
+                font-size: 4em;
+                font-weight: bold;
+            }
+
+            .common {
+                color: rgb(49, 153, 226);
+            }
+            @media screen and (max-width: 500px) {
+                .yes {
+                    opacity: 1;
+                    color: rgb(42, 111, 61);
+                }
+                .no {
+                    opacity: 0
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <p class="common">hello world</p>
+        <div class="yes">
+            <div class="yes content">yes</div>
+            <div>(less than 500px)</div>
+        </div>
+
+
+        <div class="no">
+            <div class="content">no</div>
+            <div>(larger than 500px)</div>
+        </div>
+
+    </body>
+</html>

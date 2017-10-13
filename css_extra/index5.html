@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>touch</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="600" style="border: solid black 1px">
+            Your browser does not support canvas element
+        </canvas>
+        <br>
+        <button onclick="startup()">Initialize</button>
+        <br>
+        Log:
+        <pre id="log" style="border: 1px solid #ccc;"></pre>
+        <h3>处理点击</h3>
+        <p>
+            当处理一系列触摸操作时，为了阻止鼠标事件的触发，可以在touchstart 或第一个 touchmove中调用preventDefault(),更适合的做法是在touchmove中调用preventDefault()。
+        </p>
+        <p>
+        这样做的话，鼠标事件仍然会被触发，相关的如链接等就可以继续工作。
+        </p>
+    </body>
+    <script type="text/javascript"s>
+        // ------------------------ 设置事件处理器 -------------------------
+        function startup() {
+            var el = document.getElementsByTagName("canvas")[0];
+            // TouchEvent触摸事件的类型
+            // touchstart, touchend, touchmove, touchcancel
+            //
+            // touchstart
+            // 当用户在触摸平面上放置了一个触点时触发。
+            // 事件的目标 element 将是触点位置上的那个目标 element
+            el.addEventListener("touchstart", handleStart, false);
+            // touchend
+            // 当一个触点被用户从触摸平面上移除（当用户将一个手指离开触摸平面）时触发。当触点移出触摸平面的边界时也将触发。例如用户将手指划出屏幕边缘。
+            // 事件的目标 element 和这个 touchend 事件对应的 touchstart 事件的目标 element 相同，哪怕 touchend 事件触发时，触点已经移出了该 element 。
+            el.addEventListener("touchend", handleEnd, false);
+            // touchmove
+            // 当用户在触摸平面上移动触点时触发。
+            // 事件的目标 element 和这个 touchmove 事件对应的 touchstart 事件的目标 element 相同，哪怕当 touchmove 事件触发时，触点已经移出了该 element
+            el.addEventListener("touchmove", handleMove, false);
+            // touchcancel
+            // 当触点由于某些原因被中断时触发。
+            console.log("initialized")
+        }
+
+        // ------------------------ END 设置事件处理器 -------------------------
+
+        // ------------------------ 跟踪新的触摸行为 -------------------------
+        // 正在进行的触摸事件
+        var ongoingTouches = new Array();
+
+        function handleStart(evt) {
+            // 阻止了浏览器继续处理触摸事件 (这同样也阻止了鼠标事件的传递)
+            evt.preventDefault();
+            //
+            // 拿到事件上下文，从事件的TouchEvent.changedTouches 属性中拿到改变中的触摸点列表.
+            //
+            var el = document.getElementsByTagName("canvas")[0];
+            // getContext() 方法返回一个用于在画布上绘图的环境。
+            var ctx = el.getContext("2d");
+            // 一个 TouchList 代表一个触摸平面上所有触点的列表;
+            //     举例来讲, 如果一个用户用三根手指接触屏幕(或者触控板), 与之相关的TouchList 对于每根手指都会生成一个 Touch 对象, 共计三个.
+            //** TouchEvent.changedTouches
+            // 这个 TouchList 对象列出了和这个触摸事件对应的 Touch 对象
+            //     这是一个只读属性, 包含发生改变的触点
+            //     对于 touchstart 事件, 这个 TouchList 对象列出在此次事件中新增加的触点
+            //     对于 touchmove 事件，列出和上一次事件相比较，发生了变化的触点
+            //     对于 touchend ，列出离开触摸平面的触点（这些触点对应已经不接触触摸平面的手指）
+            // Touch对象表示在触控设备上的触摸点。通常是指手指或者触控笔在触屏设备或者触摸板上的操作。
+            var touches = evt.changedTouches;
+
+            // TouchList.length
+                // 返回TouchList中 Touch 对象的数量. 只读属性.
+            for (var i=0; i<touches.length; i++) {
+                ongoingTouches.push(touches[i]);
+                // 为每次触摸选择一个颜色
+                var color = colorForTouch(touches[i]);
+                // fillStyle 属性设置或返回用于填充绘画的颜色、渐变或模式。
+                ctx.fillStyle = color;
+                // fillRect() 方法使用 fillStyle 属性所指定的颜色、渐变和模式来填充指定的矩形。
+                // fillRect(x, y, width, height)
+                // x, y	-- 矩形的左上角的坐标
+                // width, height - 矩形的大小
+                ctx.fillRect(touches[i].pageX-2, touches[i].pageY-2, 4, 4);
+            }
+        }
+
+        // ------------------------ END 跟踪新的触摸行为 -------------------------
+
+        // ------------------------ 当触摸移动时绘制 -------------------------
+
+        function handleMove(evt) {
+            evt.preventDefault();
+            var el = document.getElementsByTagName('canvas')[0];
+            var ctx = el.getContext('2d');
+            var touches = evt.changedTouches;
+
+            // lineWidth 属性设置或返回当前线条的宽度，以像素计。
+            // 用宽度为 4 像素的线条来绘制矩形
+            ctx.lineWidth = 4;
+
+            for (var i = 0; i < touches.length; i++) {
+                var color = colorForTouch(touches[i]);
+                // 查询正在进行的触摸行为
+                // Touch.identifier
+                //     返回一个可以唯一地识别和触摸平面接触的点的值.
+                //     这个值在这根手指（或触摸笔等）所引发的所有事件中保持一致, 直到它离开触摸平面.
+                var idx = ongoingTouchIndexById(touches[i].identifier);
+
+                ctx.fillStyle = color;
+                // beginPath() 丢弃任何当前定义的路径并且开始一条新的路径。它把当前的点设置为 (0,0)
+                // 当一个画布的环境第一次创建，beginPath() 方法会被显式地调用
+                ctx.beginPath();
+                // 移动到给定位置
+                // 此处为上一个接触点的位置
+                ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+                // lineTo() 方法添加一个新点，然后创建从该点到画布中最后指定点的线条（该方法并不会创建线条）
+                // 指定从上一个点到当前接触点位置的直线
+                ctx.lineTo(touches[i].pageX, touches[i].pageY);
+                // closePath() 方法关闭一条打开的子路径
+                // 并创建从当前点到开始点的路径
+                ctx.closePath();
+                // stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。默认颜色是黑色
+                ctx.stroke();
+                // 把ongoingTouches数组中之前的触摸点信息用现在的信息来代替.
+                // The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
+                ongoingTouches.splice(idx, 1, touches[i]);
+
+            }
+        }
+
+        // ------------------------ END 当触摸移动时绘制 -------------------------
+
+        // ------------------------ 处理取消触摸事件 -------------------------
+
+        function handleEnd(evt) {
+            evt.preventDefault();
+            var touches = evt.changedTouches;
+
+            for (var i = 0; i < touches.length; i++) {
+                // 直接从正在进行的触摸列表中删除，不会绘制最后一部分线段
+                ongoingTouches.splice(i, 1);
+            }
+        }
+
+        // ------------------------ 便捷函数 -------------------------
+
+        // 为每次触摸选择一个颜色
+        // colorForTouch()函数用来根据每一次触摸所独有的标识来取颜色
+        // 标识的范围通常是0到所有活动触摸对象的数量-1
+        function colorForTouch(touch) {
+            var id = touch.identifier;
+            id = id.toString(16); // make it a hex digit
+            return "#" + id + id + id;
+        }
+
+        // 查询正在进行的触摸行为
+        // 通过遍历查找数组 ongoingTouches 来找到与给定标识相匹配的触摸行为，之后返回这个触摸行为在数组中的下标
+        function ongoingTouchIndexById(idToFind) {
+            for (var i = 0; i < ongoingTouches.length; i++) {
+                var id = ongoingTouches[i].identifier;
+
+                if (id == idToFind) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+
+        // ------------------------ END 便捷函数 -------------------------
+
+    </script>
+</html>

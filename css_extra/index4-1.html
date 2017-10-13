@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css变换-transition</title>
+        <style>
+            .box{
+                border: 1px solid black;
+                height: 100px;
+                width: 100px;
+            }
+            /*transition*/
+            .box{
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                transform: translate(0, 0);
+
+                -webkit-transition: transform 500ms;
+                -moz-transition: transform 500ms;
+                -ms-transition: transform 500ms;
+                -o-transition: transform 500ms;
+                transition: transform 500ms;
+            }
+            .move{
+                -webkit-transform: translate(100px, 200px);
+                -moz-transform: translate(100px, 200px);
+                -ms-transform: translate(100px, 200px);
+                -o-transform: translate(100px, 200px);
+                transform: translate(100px, 200px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <h1>transition</h1>
+        <a href="http://www.w3school.com.cn/cssref/pr_transition.asp">w3chool参考</a>
+        <p style="font-weight: bold; font-style: italic">transition: property duration timing-function delay;</p>
+        <p>transition 属性是一个简写属性，用于设置四个过渡属性</p>
+    <ul>
+            <li>transition-property</li>
+            <li>transition-duration</li>
+            <li>transition-timing-function</li>
+            <li>transition-delay</li>
+        </ul>
+
+        <h1>tranform</h1>
+        <a href="http://www.w3school.com.cn/cssref/pr_transform.asp">w3chool参考</a>
+        <p style="font-weight: bold; font-style: italic">transform: none|transform-functions;</p>
+        <p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
+        <p>可以参照index1.html</p>
+        <img src="image/4-1.png">
+    </body>
+    <script type="text/javascript">
+        var box = document.querySelector('.box');
+
+        function movebox(){
+            box.classList.add('move');
+        }
+
+        box.addEventListener("click", movebox, false);
+
+//        transition结束后执行事件
+        // 此事件仅支持IE10+
+        box.addEventListener('transitionend', onTransitionEnd, false);
+
+        function onTransitionEnd() {
+            // Handle the transition finishing.
+            alert('finish!');
+        }
+
+    </script>
+</html>

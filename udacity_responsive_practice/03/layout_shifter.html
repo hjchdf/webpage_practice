@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Layout Shifter</title>
+    <style>
+        .container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+            width: 100%;
+            height:150px;
+        }
+        .dark_blue {
+            background-color: #1b356d;
+        }
+        .light_blue {
+            background-color: #0493D5;
+        }
+        .green {
+            background-color: #047932;
+        }
+        .red{
+            background-color: #ea0e2b;
+        }
+
+        @media screen and (min-width: 500px){
+            .dark_blue {
+                width: 50%;
+                height: 300px;
+            }
+            #container2{
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 600px){
+            .dark_blue{
+                width: 25%;
+                order: 1;
+                height: 300px;
+            }
+            #container2{
+                width: 50%;
+                /*the default order value for an element is zero*/
+                /*order: 0;*/
+            }
+            .red{
+                width: 25%;
+                order: -1;
+                height: 300px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box dark_blue"></div>
+
+    <div class="container" id="container2">
+        <div class="box light_blue"></div>
+        <div class="box green"></div>
+    </div>
+
+    <div class="box red"></div>
+
+</div>
+</body>
+</html>

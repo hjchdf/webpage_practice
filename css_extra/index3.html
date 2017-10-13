@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>宽度自适应</title>
+        <style media="screen">
+            .wrap{
+                background: rgb(48, 167, 168);
+            }
+            .clearfix::after{
+                content: "";
+                clear: both;
+                display: block;
+            }
+            .left{
+                float: left;
+                width: 100px;
+                background-color: rgb(191, 12, 12);
+                height: 180px;
+            }
+            .right{
+                float: right;
+                width: 150px;
+                background-color: rgb(48, 29, 140);
+                height: 200px;
+            }
+            .center{
+                background-color: rgb(193, 228, 52);
+                margin-left: 110px;
+                margin-right: 160px;
+                height: 150px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="wrap clearfix">
+            <div class="left">left</div>
+            <div class="right">right</div>
+            <div class="center">center</div>
+
+        </div>
+
+    </body>
+</html>

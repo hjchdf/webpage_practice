@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div{
+                width:100px;
+                height:100px;
+                background:yellow;
+                transition-property:width 0.1s linear ;
+                /* Firefox 4 */
+                -moz-transition:width 0.1s linear ;
+                /* Safari and Chrome */
+                -webkit-transition:width 0.1s linear ;
+                /* Opera */
+                -o-transition:width 0.1s linear ;
+            }
+
+            div:hover{
+                width:200px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div></div>
+
+    <p>请把鼠标指针放到黄色的 div 元素上，来查看过渡效果。</p>
+
+    <p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+    <p><b>注释：</b>这个过渡效果会在开始之前等待两秒。</p>
+
+    <p>Note</p>
+    <a href="http://www.w3school.com.cn/css3/css3_transition.asp">W3C文档</a>
+    <table border=1>
+        <tr>
+            <td>&emsp;transition&emsp;</td>
+            <td>简写属性，用于在一个属性中设置四个过渡属性。</td>
+        </tr>
+        <tr>
+            <td>&emsp;transition-property&emsp;</td>
+            <td>规定应用过渡的 CSS 属性的名称</td>
+        </tr>
+        <tr>
+            <td>&emsp;transition-duration&emsp;</td>
+            <td>定义过渡效果花费的时间。默认是 0。</td>
+        </tr>
+        <tr>
+            <td>&emsp;transition-timing-function&emsp;</td>
+            <td>规定过渡效果的时间曲线。默认是 "ease"。</td>
+        </tr>
+        <tr>
+            <td>&emsp;transition-delay&emsp;</td>
+            <td>规定过渡效果何时开始。默认是 0。</td>
+        </tr>
+    </table>
+    </body>
+</html>

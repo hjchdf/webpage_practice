@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Flexbox</title>
+        <style media="screen">
+            .container {
+                display: flex;
+                flex: auto;
+                flex-wrap: wrap;
+            }
+            .box {
+                /*border: 1px solid black;*/
+                width: 100%;
+                height: 150px;
+                text-align: center;
+            }
+            header { width: 100%; background-color:rgb(175, 232, 35); order: 0;}
+            .red { width: 50%; background-color:rgb(255, 32, 32); order: 1; }
+            .orange { width: 50%; background-color: rgb(238, 110, 46); order: 2;}
+            footer { width: 100%; background-color: rgb(98, 187, 121); order:3;}
+            .light_blue { width: 20%; background-color: #64d1dd; order:4;}
+            .dark_blue { width: 60%; background-color: #4947ba; order: 5;}
+            .green {  width: 20%; background-color: #70aa25; order: 6;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header class="box"></header>
+            <div class="box red"></div>
+            <div class="box orange"></div>
+            <footer class="box"></footer>
+            <div class="box light_blue"></div>
+            <div class="box dark_blue"></div>
+            <div class="box green"></div>
+        </div>
+    </body>
+</html>

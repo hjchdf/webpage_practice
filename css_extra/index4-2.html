@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css动画-animation</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+        }
+        /**
+ * This is a simplified version without
+ * vendor prefixes.With them included
+ * (which you will need), things get far
+ * more verbose!
+ */
+        .box {
+            /* Choose the animation */
+            animation-name: movingBox;
+
+            /* The animation’s duration */
+            animation-duration: 1300ms;
+
+            /* The number of times we want
+                the animation to run */
+            animation-iteration-count: infinite;
+
+            /* Causes the animation to reverse
+                on every odd iteration */
+            animation-direction: alternate;
+        }
+
+        @keyframes movingBox {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+
+            25% {
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translate(100px, 100px);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translate(30px, 30px);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div style="position: relative; top: 200px;">
+        <p >除了使用 CSS 变换之外，还可以使用 CSS 动画，这允许您对单个动画关键帧、持续时间和迭代进行更多控制.</p>
+        <p>如果您是动画初学者，那么说明一下，关键帧是来自手绘动画的老术语。动画设计者为一个片段创建多个特定帧，称为关键帧，关键帧将提供某个动作的起止状态，然后它们开始绘出关键帧之间的所有单个帧。现在我们使用 CSS 动画也有相似的过程，我们指示浏览器，CSS 属性在指定时点需要什么值，然后浏览器填充其中的间隔。</p>
+    </div>
+</body>
+</html>
