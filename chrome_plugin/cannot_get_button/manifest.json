@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+    "name": "make you can't catch the seach buttom",
+    "version": "1.0",
+
+    "description": "keep search button of google escaping from you",
+    "content_scripts": [
+        {
+            "matches": ["*://www.baidu.com/"],
+            "js": ["js/cannot_touch.js"]
+        }
+    ]
+}

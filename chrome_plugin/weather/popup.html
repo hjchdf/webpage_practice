@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 520px;
+            height: 270px;
+        }
+        table{
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 12px;
+            width: 480px;
+            text-align: left;
+            /*表格的边框是否被合并为一个单一的边框*/
+            /*如果可能，边框会合并为一个单一的边框。*/
+            border-collapse: collapse;
+            border: 1px solid #69c;
+            margin: 20px;
+            /*鼠标指针放在一个元素边界范围内时所用的光标形状*/
+            /*默认光标（通常是一个箭头）*/
+            cursor: default;
+        }
+        table th{
+            font-weight: normal;
+            font-size: 14px;
+            color: #003399;
+            border-bottom: 1px dashed #69c;
+            padding: 12px 17px;
+            /*设置如何处理元素内的空白。*/
+            /*文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+            white-space: nowrap;
+        }
+        table td{
+            color: #666699;
+            padding: 7px 17px;
+            white-space: nowrap;
+        }
+        table tbody tr:hover td{
+            color: #333399;
+            background: #d0dafd;
+        }
+    </style>
+</head>
+<body>
+    <div id="weather"></div>
+    <script src="weather.js"></script>
+</body>
+</html>

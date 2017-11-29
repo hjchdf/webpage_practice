@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Google is online",
+    "version": "1.0",
+
+    "description": "check whether google is online and change the icon color, with green for online and red for offline.",
+
+    "browser_action": {
+        "default_icon": "iconGreen.png"
+    },
+    "background": {
+        "scripts": [
+            "status.js"
+        ]
+    },
+    "permissions": [
+        "https://www.baidu.com/"
+    ]
+}

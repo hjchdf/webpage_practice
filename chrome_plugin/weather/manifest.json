@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "weather forecast",
+    "version": "1.0",
+    "description": "check the weather forecast for the next two weeks",
+
+    "browser_actions": {
+        "default_icon": "icon1.png",
+        "default_title": "weather forecast",
+        "default_popup": "popup.html"
+    },
+    "option_page": "options.html",
+    "permissions": [
+        "http://api.openweathermap.org/data/2.5/forecast?q=*"
+    ]
+}

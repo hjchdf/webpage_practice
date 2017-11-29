@@ -1,0 +1,7 @@
+{
+	"mainfest_version": 2,
+	"name": "my clock",
+	"version": "1,0",
+	"description": "my first chrome plugin.",
+	"icons"
+}
