@@ -1,3 +1,8 @@
+// ==============================
+// input your key first!!!
+var key = 'da219e92bac54685bc50b0286c938c15';
+
+
 function httpRquest(url, callback) {
     var xmlhttp;
     // Browser compatible
@@ -24,6 +29,22 @@ function httpRquest(url, callback) {
 
 function showWeather(result) {
     result = JSON.parse(result);
-    var list = result.list;
-    var table =
+    var list = result.HeWeather6[0].daily_forecast;
+    var table = '<table>';
+    table += '<tr><th>date</th><th>weather</th><th>min_tmp</th><th>max_tmp</th></tr>';
+    for(var i in list){
+        table += "<tr>";
+        table += ('<td>' + list[i].date + '</td>');
+        table += ('<td>' + list[i].cond_txt_d + '</td>');
+        table += ('<td>' + list[i].tmp_min + '</td>');
+        table += ('<td>' + list[i].tmp_max + '</td>');
+        table += '</tr>';
+    }
+    table += '</table>';
+    document.getElementById('weather').innerHTML = table;
 }
+
+var city = localStorage.city;
+city = city?city:'beijing'
+var url= 'https://free-api.heweather.com/s6/weather/forecast?location=' + city + '&key=' + key;
+httpRquest(url, showWeather);

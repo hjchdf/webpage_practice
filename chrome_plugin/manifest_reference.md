@@ -24,6 +24,8 @@
             "24": "images/icon24.png",           // optional
             "32": "images/icon32.png"            // optional
           },
+        // You can provide any size icon to be used in Chrome, and Chrome will select the closest one and scale it to the appropriate size to fill the 16-dip space. However, if the exact size isn't provided, this scaling can cause the icon to lose detail or look fuzzy.
+        // Since devices with less-common scale factors like 1.5x or 1.2x are becoming more common, you are encouraged to provide multiple sizes for your icons. 
           "default_title": "Google Mail",      // optional; shown in tooltip
           "default_popup": "popup.html"        // optional
         },
