@@ -21,9 +21,26 @@ from pip.req import parse_requirements
 from pip.index import PackageFinder
 from pip._vendor.requests import session
 
-request = session()
-
+# 一个请求的sesion,提供持久的cookie,连接和配置
+requests = session()
 
 class Requirements(object):
     def __init__(self, reqfile=None):
-        super(Requirements, self).__init__()
+        # 首先调用父类初始化
+        super(Requirements, self).__init__()  # 兼容Python2和3的写法
+                            # 此处也可以写成 super(Requirements, self).__init__()
+        self.path = reqfile
+        self.requirements = []
+
+        if reqfile:
+             self.load(reqfile)
+
+    def __repr__(self):
+        return "<Requirements '{}'".format(self.path)
+
+    def load(self, reqfile):
+        if not os.path.exists(reqfile):
+        # if path refers to an existing path or an open file descriptor.
+            raise ValueError("The give requirements file does not exist.")
+
+        finder = PackageFinder([], [], session=requests)
