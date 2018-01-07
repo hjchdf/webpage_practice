@@ -7,6 +7,8 @@
     <title>Flexbox</title>
     <style media="screen">
         div { border: 1px solid #000; }
+
+        /*完美居中部分*/
         .parent {
             display: flex;
             height: 300px;
@@ -14,8 +16,142 @@
         .child{
             width: 100px;
             height: 100px;
-            /*margin: auto;*/
+            margin: auto;
             /*margin-top: auto;*/
+        }
+
+        /*骰子布局*/
+        .dot {
+            background-color: #000;
+            width: 30px;
+            height: 30px;
+            margin: 4px;
+        }
+        .frame{
+            width: 120px;
+            height: 120px;
+        }
+        /*单项目*/
+        #default{ display: flex; }
+        #center{
+            display: flex;
+            justify-content: center;
+        }
+        #right{
+            display: flex;
+            justify-content: flex-end;
+        }
+        #cross-center{
+            display: flex;
+            align-items: center;
+        }
+        #center-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #bottom-center{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        #bottom-right{
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        /*双项目*/
+        #two1{
+            display: flex;
+            justify-content: space-between;
+        }
+        #two2{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        #two3{
+            display: flex;
+            flex-direction: column; /*此时主轴为垂直方向*/
+            justify-content: space-between; /*在主轴上的对齐方式，即垂直方向*/
+            align-items: center; /*在交叉轴上的对齐方式，即水平方向*/
+        }
+        #two4{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        /*对角排列1*/
+        #two5{
+            display: flex;
+            /*justify-content: space-between;*/
+            /*不能按上述方式写，space-between会让子元素 -两端对齐，项目间间隔相等*/
+            /*此处第二个方块会被挤到最右边*/
+            /*如果要让第二个方块处于正中，可以调节外边距*/
+            /*方案二： #two5加上'flex-direction: column;', 但纵向边距依然需要调节*/
+        }
+        .twodot5:nth-child(2){ align-self: center; }
+        /*对角排列2*/
+        #two6{
+            display: flex;
+            justify-content: space-between;
+        }
+        .twodot6:nth-child(2){ align-self: flex-end; }
+
+        /*三项目*/
+        #three{
+            display: flex;
+            justify-content: space-between;
+        }
+        .threedot:nth-child(2){ align-self: center; }
+        .threedot:nth-child(3){ align-self: flex-end; }
+
+        /*四项目*/
+        #four1{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-content: space-between;
+        }
+        #four2{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        .column{
+            display: flex;
+            justify-content: space-between;
+            flex-basis: 100%;
+        }
+
+        /*六项目*/
+        #six1{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        #six2{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        #six3{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .row{
+            display: flex; /*设置容器后，容器内项目（行内元素）具有高/ 宽度*/
+            flex-basis: 100%; /*使项目占据主轴空间100%*/
+        }
+        .row:nth-child(2){ justify-content: center; }
+        .row:nth-child(3){ justify-content: space-between; }
+
+        /*九项目*/
+        #nine{
+            display: flex;
+            flex-wrap: wrap; /*没有设置这条前，不换行，平分一行宽度*/
         }
     </style>
 </head>
@@ -24,6 +160,7 @@
     此页面参考以下文档
     <ul>
         <li><a href="https://www.w3cplus.com/css3/a-guide-to-flexbox-new.html">一个完整的Flexbox指南</a></li>
+        <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></li>
     </ul>
     </p>
 
@@ -32,6 +169,150 @@
     <div class="parent">
         <div class="child"></div>
     </div>
+
+    <h2>骰子布局</h2>
+    <h3>单项目</h3>
+    <h4>默认首行左对齐</h4>
+    <div class="frame" id="default">
+        <div class="dot"></div>
+    </div>
+
+    <h4>居中对齐</h4>
+    <div class="frame" id="center">
+        <div class="dot"></div>
+    </div>
+
+    <h4>右对齐</h4>
+    <div class="frame" id="right">
+        <div class="dot"></div>
+    </div>
+
+    <h4>设置交叉对齐方式</h4>
+    <h5>1</h5>
+    <div class="frame" id="cross-center">
+        <div class="dot"></div>
+    </div>
+    <h5>2</h5>
+    <div class="frame" id="center-center">
+        <div class="dot"></div>
+    </div>
+    <h5>3</h5>
+    <div class="frame" id="bottom-center">
+        <div class="dot"></div>
+    </div>
+    <h5>4</h5>
+    <div class="frame" id="bottom-right">
+        <div class="dot"></div>
+    </div>
+
+    <h3>双项目</h3>
+    <h4>1</h4>
+    <div class="frame" id="two1">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>2</h4>
+    <div class="frame" id="two2">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>3</h4>
+    <div class="frame" id="two3">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>4</h4>
+    <div class="frame" id="two4">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>5</h4>
+    <div class="frame" id="two5">
+        <div class="dot twodot5"></div>
+        <div class="dot twodot5"></div>
+    </div>
+    <h4>6</h4>
+    <div class="frame" id="two6">
+        <div class="dot twodot6"></div>
+        <div class="dot twodot6"></div>
+    </div>
+
+    <h3>三项目</h3>
+    <div class="frame" id="three">
+        <div class="dot threedot"></div>
+        <div class="dot threedot"></div>
+        <div class="dot threedot"></div>
+    </div>
+
+    <h3>四项目</h3>
+    <h4>1</h4>
+    <div class="frame" id="four1">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>2</h4>
+    <div class="frame" id="four2">
+        <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <h3>六项目</h3>
+    <h4>1</h4>
+    <div class="frame" id="six1">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h4>2</h4>
+    <div class="frame" id="six2">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <h5>3</h5>
+    <div class="frame" id="six3">
+        <div class="row">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="row">
+            <span class="dot"></span>
+        </div>
+        <div class="row">
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <h3>九项目</h3>
+    <div class="frame" id="nine">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+
 
 
 </body>
