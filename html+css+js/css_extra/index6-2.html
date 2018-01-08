@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex2</title>
+</head>
+<style media="screen">
+    .grid{
+        border: solid 1px #000;
+        display: flex;
+        width: 600px;
+        height: 90px;
+    }
+    .grid-cell{
+        flex: 1; /*平均分配宽度，此处未设置前内部div不具有宽度*/
+        border: solid 1px #000;
+        height: 80px;
+        /*margin: 5px; */ /*flex-basic为100%时，设置margi可能会溢出*/
+        background-color: rgb(186, 222, 213);
+    }
+
+    /*百分比布局*/
+    .grid-cell.u-log4{ flex: 0 0 25%; }
+    .grid-cell.u-log3{ flex: 0 0 33.33%; }
+    .grid-cell.u-log10{ flex: 0 0 10%; }
+    .grid-cell.over{ flex: 0 0 60%;}
+    .grid-cell.over2{ flex: 1 1 60%; }
+
+
+</style>
+<body>
+    <h1>网格布局</h1>
+    <h2>基本网格布局</h2>
+    <div class="grid">
+        <div class="grid-cell">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+    </div>
+
+    <h2>百分比布局</h2>
+    <div class="grid">
+        <div class="grid-cell u-log4">25%</div>
+        <div class="grid-cell u-log10" >10%</div>
+        <div class="grid-cell u-lof3">33.33%</div>
+        <div class="grid-cell">活动空间</div>
+    </div>
+    <h3>试验</h3>
+    <div class="grid">
+        <div class="grid-cell over">测试超过宽度的情况</div>
+        <div class="grid-cell over">不会自动收缩</div>
+    </div>
+    <div class="grid">
+        <div class="grid-cell over2">测试超过宽度的情况</div>
+        <div class="grid-cell over2">不会自动收缩</div>
+    </div>
+
+</body>
+</html>

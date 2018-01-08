@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流式布局</title>
+    <style>
+        .parent{
+            width: 200px;
+            height: 150px;
+            background-color: #000;
+            display: flex;
+            flex-flow: row wrap;
+            align-content: flex-start;
+        }
+        .child{
+            box-sizing: border-box;
+            /*为元素设定的宽度和高度决定了元素的边框盒。*/
+            /*就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。*/
+            /*通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。*/
+            background: #fff;
+            flex: 0 0 25%;
+            height: 50px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>8个</h1>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+
+    <h1>9个</h1>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+
+    <h1>10个</h1>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+</html>

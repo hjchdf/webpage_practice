@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HolyGrail layout</title>
+    <style>
+        header, footer{
+            color: #fff;
+            font-size: 3em;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        /*圣杯布局*/
+        .HolyGrail{
+            display: flex;
+            min-height: 100vh; /*相对于视口的高度。视口被均分为100单位的vh*/
+            flex-direction: column;
+        }
+        header,
+        footer{
+            flex: 1;
+            background-color: rgb(148, 153, 164);
+        }
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+        .HolyGrail-content{
+            flex: 1;
+            background-color: rgb(239, 241, 231);
+        }
+        .HolyGrail-nav, .HolyGrail-ads {
+            flex: 0 0 12em;
+            /*两个侧边栏宽度设为12em*/
+        }
+        .HolyGrail-ads{
+            background-color: rgb(233, 91, 38);
+        }
+        .HolyGrail-nav{
+            order: -1;
+            background-color: rgb(136, 195, 214);
+        }
+
+        /*响应式*/
+        @media (max-width: 768px) {
+            .HolyGrail-body{
+                flex-direction: column;
+                flex: 1;
+            }
+            .HolyGrail-nav,
+            .HolyGrail-content,
+            .HolyGrail-ads{
+                flex: auto;
+            }
+        }
+    </style>
+</head>
+<body class="HolyGrail">
+        <header>header</header>
+        <div class="HolyGrail-body">
+            <main class="HolyGrail-content">main.HolyGrail-content</main>
+            <nav class="HolyGrail-nav">nav.HolyGrail-nav</nav>
+            <aside class="HolyGrail-ads">aside.HolyGrail-ads</aside>
+        </div>
+        <footer>footer</footer>
+</body>
+</html>

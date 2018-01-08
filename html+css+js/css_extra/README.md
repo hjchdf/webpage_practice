@@ -20,3 +20,9 @@
     > 一个通过touch event 实现的网页画图板
 
     [参考MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events)
+
+- index6 -- flex弹性盒模型
+
+    > flex文档在index6.md中，index6为flex布局实例（主要参考阮一峰）
+
+    - index6-1.html为骰子的布局
